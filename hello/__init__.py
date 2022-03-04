@@ -1,59 +1,120 @@
 from hello.domains import Member
-from hello.models import Quiz01Calculator, Quiz05Dice, Quiz07RandomChoice, Quiz08Rps, Quiz02Bmi
+from hello.quiz00 import Quiz00
+from hello.quiz10 import Quiz10
+from hello.quiz20 import Quiz20
+from hello.quiz30 import Quiz30
+from hello.quiz40 import Quiz40
 
 if __name__ == '__main__':
-    while True:
-        menu = input('0.Exit 1.계산기 (+, -,*,/) 2.bmi 3.Grade 4.AutoGrade 5.Dice '
-                     '6.RandomGenerator 7.RandomChoice 8.Rps 9.GetPrime 10.LeapYear '
-                     '11.NumberGolf 12.Lotto 13.Bank 14.Gugudan')
-        if menu == '0':
-            break
-        elif menu == '1':
-            q1 = Quiz01Calculator(int(input('첫번째 수')), str(input('연산자')), int(input('두번째 수')))
-            res = f'{q1.num1} {q1.op} {q1.num2} = {q1.calc()}'
-        elif menu == '2':
-            m = Member()
-            q2 = Quiz02Bmi()
-            m.name = input('이름을 입력하세요')
-            m.height = float(input('키를 입력하세요'))
-            m.weight = float(input('몸무게를 입력하세요'))
-            res = q2.getBmi(m)
-            res = f' 이름 :{m.name}, 키: {m.height} 몸무게:{m.weight}  BMI 상태:{q2.getBmi(m)}'
-        elif menu == '3':
-            pass
-        elif menu == '4':
-            for i in ['김유신', '강감찬', '유관순', '윤봉길', '신사임당']:
-                res = i
-            kor = int(input('국어 : '))
-            eng = int(input('영어 : '))
-            math = int(input('수학 : '))
-            # grade =Grade(name,kor,eng,math)
-            # print(f'{name}님의 국어{kor} 영어{eng} 수학{math} 합계{grade.sum()} 평균{grade.avg()}')
-        elif menu == '5':
-            res = f'{Quiz05Dice.cast()}'
-        elif menu == '6':
-            q6 = None
-            res = f'{q6.ran()}'
-
-        elif menu == '7':
-            q7 = Quiz07RandomChoice()
-            res = f'{q7.choiceMember()}'
-        elif menu == '8':
-            q8 = Quiz08Rps(int(input('1.가위 2.바위 3.보')))
-            res = f'User : {q8.rps[q8.user -1]} Com:{q8.com-1} 결과:{q8.battle()}'
-
-        elif menu == '9':
-            pass
+    q0 = Quiz00()
+    q1 = Quiz10()
+    q2 = Quiz20()
+    q3 = Quiz30()
+    q4 = Quiz40()
+    while 1:
+        menu = input("00계산기 01Bmi 02주사위 03가위바위보 04윤년 05성적표 06멤버선택 07로또 08입출금 09구구단"
+                     "10버블 11삽입 12선택 13퀵 14병합 15매직 16지그재그 17직각별 18정삼각별 19예약"
+                     "20리스트 21튜플 22딕셔너리 23 24 25 26 27 28 29"
+                     "30 31 32 33 34 35 36 37 38 39")
+        if menu == '00':
+            q0.quiz00calculator()
+        elif menu == '01':
+            q0.quiz01bmi()
+        elif menu == '02':
+            q0.quiz02dice()
+        elif menu == '03':
+            q0.quiz03rps()
+        elif menu == '04':
+            q0.quiz04leap()
+        elif menu == '05':
+            q0.quiz05grade()
+        elif menu == '06':
+            q0.quiz06memberChoice()
+        elif menu == '07':
+            q0.quiz07lotto()
+        elif menu == '08':
+            q0.quiz08bank()
+        elif menu == '09':
+            q0.quiz09gugudan()
         elif menu == '10':
-            pass
+            q1.quiz10bubble()
         elif menu == '11':
-            pass
+            q1.quiz11insertion()
         elif menu == '12':
-            pass
+            q1.quiz12selection()
         elif menu == '13':
-            pass
+            q1.quiz13quick()
         elif menu == '14':
-            pass
+            q1.quiz14merge()
+        elif menu == '15':
+            q1.quiz15magic()
+        elif menu == '16':
+            q1.quiz16zigzag()
+        elif menu == '17':
+            q1.quiz17prime()
+        elif menu == '18':
+            q1.quiz18golf()
+        elif menu == '19':
+            q1.quiz19booking()
+        elif menu == '20':
+            q2.quiz20list()
+        elif menu == '21':
+            q2.quiz21tuple()
+        elif menu == '22':
+            q2.quiz22dict()
+        elif menu == '23':
+            q2.quiz23listcom()
+        elif menu == '24':
+            q2.quiz24zip()
+        elif menu == '25':
+            q2.quiz25dictcom()
+        elif menu == '26':
+            q2.quiz26map()
+        elif menu == '27':
+            q2.quiz27()
+        elif menu == '28':
+            q2.quiz28()
+        elif menu == '29':
+            q2.quiz29()
+        elif menu == '30':
+            q3.quiz30()
+        elif menu == '31':
+            q3.quiz31()
+        elif menu == '32':
+            q3.quiz32()
+        elif menu == '33':
+            q3.quiz33()
+        elif menu == '34':
+            q3.quiz34()
+        elif menu == '35':
+            q3.quiz35()
+        elif menu == '36':
+            q3.quiz36()
+        elif menu == '37':
+            q3.quiz37()
+        elif menu == '38':
+            q3.quiz38()
+        elif menu == '39':
+            q3.quiz39()
+        elif menu == '40':
+            q4.quiz40()
+        elif menu == '41':
+            q4.quiz41()
+        elif menu == '42':
+            q4.quiz42()
+        elif menu == '43':
+            q4.quiz43()
+        elif menu == '44':
+            q4.quiz44()
+        elif menu == '45':
+            q4.quiz45()
+        elif menu == '46':
+            q4.quiz46()
+        elif menu == '47':
+            q4.quiz47()
+        elif menu == '48':
+            q4.quiz48()
+        elif menu == '49':
+            q4.quiz49()
         else:
-            res = f'잘못된 선택입니다.'
-        print(res)
+            break
