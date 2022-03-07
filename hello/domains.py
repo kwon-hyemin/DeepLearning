@@ -39,6 +39,9 @@ def members():
             '심민혜', '권솔이', '김지혜', '하진희', '최은아',
             '최민서', '한성수', '김윤섭', '김승현',
             "강 민", "최건일", "유재혁", "김아름", "장원종"]
+
+
+def myMember(): return random.choice(members())
 # @dataclass
 # class Member:
 #     name: str

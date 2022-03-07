@@ -68,6 +68,7 @@ if __name__ == '__main__':
             q2.quiz24zip()
         elif menu == '25':
             q2.quiz25dictcom()
+
         elif menu == '26':
             q2.quiz26map()
         elif menu == '27':
