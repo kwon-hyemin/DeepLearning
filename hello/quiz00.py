@@ -145,7 +145,7 @@ class Quiz00:
     def passChk(self):  # 60점이상이면 합격
         pass
 
-    def quiz06memberChoice(self):
+    def quiz06member_choice(self):
 
         return members()[myRandom(0, 23)]
 
