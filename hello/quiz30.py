@@ -56,6 +56,8 @@ class Quiz30:
 
     def quiz37(self) -> str: return None
 
-    def quiz38(self) -> str: return None
+    def quiz38(self) -> str:
+        type(range(3))
+        return None
 
     def quiz39(self) -> str: return None
