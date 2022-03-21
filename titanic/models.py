@@ -4,7 +4,9 @@ from icecream import ic
 
 from context.domains import Dataset
 from context.models import Model
-
+from sklearn.model_selection import KFold
+from sklearn.model_selection import cross_val_score
+from sklearn.ensemble import RandomForestClassifier
 
 
 class TitanicModel(object):
@@ -34,6 +36,8 @@ class TitanicModel(object):
         this = self.age_ratio(this)
         this = self.drop_feature(this, 'Age')
         this = self.embarked_nominal(this)
+        this = self.fare_ratio(this)
+        this = self.drop_feature(this, 'Fare')
 
         '''
         this = self.sex_nominal(this)
@@ -43,8 +47,26 @@ class TitanicModel(object):
         this = self.fare_ratio(this)
         '''
 
-        self.df_info(this)
+        k_fold = self.create_k_fold()
+        accuracy = self.get_accuracy(this, k_fold)
+        ic(accuracy)
+
         return this
+
+    def learning(self, train_fname, test_fname):
+        this = self.preprocess(train_fname, test_fname)
+        print('*' * 100)
+        self.df_info(this)
+        k_fold = self.create_k_fold()
+        ic(f'사이킷런 알고리즘 정확도: {self.get_accuracy(this,k_fold)}')
+        self.submit(this)
+
+    @staticmethod
+    def submit(this):
+        clf = RandomForestClassifier()
+        clf.fit(this.train, this.label)
+        prediction = clf.predict(this.test)
+        pd.DataFrame({'PassengerId': this.id, 'Survived': prediction}).to_csv('./save/submission.csv', index=False)
 
     @staticmethod
     def df_info(this):
@@ -137,7 +159,7 @@ class TitanicModel(object):
                        'Young Adult': 5, 'Adult': 6, 'Senior': 7}
         train['Age'] = train['Age'].fillna(-0.5)
         test['Age'] = test['Age'].fillna(-0.5)  # 0인 Unknown 값을 잡으려고
-        bins = [-1, 0, 5, 12, 18, 24, 35, 60, np.inf] # 초과값 이하 값
+        bins = [-1, 0, 6, 12, 18, 24, 35, 60, np.inf]  # 초과값 이하 값
         labels = ['Unknown', 'Baby', 'Child', 'Teenager', 'Student', 'Young Adult', 'Adult', 'Senior']
         for these in train, test:
             # pd.cut() 을 사용하시오. 다른 곳은 고치지 말고 다음 두 줄만 코딩하시오
@@ -167,8 +189,6 @@ class TitanicModel(object):
         # train 의 values : S = 644, C = 168, Q = 77
         # test 의 values  : S = 270, C = 102, Q = 46
 
-        return this
-
     @staticmethod
     def sex_nominal(this) -> object:
         gender_mapping = {'male': 0, 'female': 1}
@@ -187,8 +207,26 @@ class TitanicModel(object):
 
     @staticmethod
     def fare_ratio(this) -> object:
-        this.test['Fare'] = this.test['Fare'].fillna(1)
-        this.train['FareBand'] = pd.qcut(this.train['Fare'], 4)
+        train = this.train
+        test = this.test
+        fare_mapping = {'Unknown': 0, 'First': 1, 'Second': 2, 'Third': 3}
+        labels = ['Unknown', 'First', 'Second', 'Third']
+
+        test['Fare'] = test['Fare'].fillna(1)
+        train['Fare'] = train['Fare'].fillna(1)
+        for these in train, test:
+            these['Fare'] = pd.qcut(these['Fare'], 4, labels=labels)
+            these['FareBand'] = these['Fare'].map(fare_mapping)
         # print(f'qcut 으로 bins 값 설정 {this.train["FareBand"].head()}')
-        bins = [-1, 8, 15, 31, np.inf]
+        # bins = [-1, 8, 15, 31, np.inf]
         return this
+
+    @staticmethod
+    def create_k_fold() -> object:
+        return KFold(n_splits=10, shuffle=True, random_state=0)
+
+    @staticmethod
+    def get_accuracy(this, k_fold):
+        score = cross_val_score(RandomForestClassifier(), this.train, this.label, cv=k_fold, n_jobs=1,
+                                scoring='accuracy')
+        return round(np.mean(score) * 100, 2)
