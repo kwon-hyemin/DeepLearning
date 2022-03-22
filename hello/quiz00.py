@@ -151,7 +151,7 @@ class Quiz00:
 
     def quiz07lotto(self):
 
-        pass
+        return myRandom(0, 7)
 
     def quiz08bank(self):  # 이름, 입금, 출금만 구현
         Acconunt.main()
@@ -203,7 +203,6 @@ class Acconunt(object):
             if j.account_number == account_number:
                 return ls[i]
 
-
     @staticmethod
     def del_account(ls, account_number):
         for i, j in enumerate(ls):
@@ -239,7 +238,6 @@ class Acconunt(object):
                 # deposit = int(input('입금액'))
                 # account_number = input('입금할 계좌번호')
                 Acconunt.deposit_account(ls, input())
-
 
                 print()
                 # Acconunt.deposit_account(ls, int(input('입금액')))
