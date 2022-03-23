@@ -198,10 +198,10 @@ class Acconunt(object):
 
     @staticmethod
     def find_account(ls, account_number):
-        # return ''.join([j.to_string() if j.account_number == account_number else '찾는계좌없음' for i, j in enumerate(ls)])
-        for i, j in enumerate(ls):
-            if j.account_number == account_number:
-                return ls[i]
+        return ''.join([j.to_string() if j.account_number == account_number else '찾는계좌없음' for i, j in enumerate(ls)])
+        # for i, j in enumerate(ls):
+        #     if j.account_number == account_number:
+        #         return ls[i]
 
     @staticmethod
     def del_account(ls, account_number):

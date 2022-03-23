@@ -145,17 +145,18 @@ class Quiz20:
         # scores = [i for i in [myRandom(0, 100)]]
         # print(students, scores)
         # dt = {i: j for i, j in zip(ls1, ls2)}
-        q = Quiz00()
-        c = set([q.quiz06member_choice() for i in range(5)])
-        # le = len(c)
-        print(f'set size : {len(c)}')
-        while len(c) != 5:
-            c.add(q.quiz06member_choice())
-        students = list(c)
-        scores = [myRandom(0, 100) for i in range(5)]
-        # d1 = {i: j for i, j in zip(students, scores)}
-        # dict(zip(students, scores))
-        return {i: j for i, j in zip(students, scores)}
+        # # q = Quiz00()
+        # # c = set([q.quiz06member_choice() for i in range(5)])
+        # # # le = len(c)
+        # print(f'set size : {len(c)}')
+        # while len(c) != 5:
+        #     c.add(q.quiz06member_choice())
+        # students = list(c)
+        # scores = [myRandom(0, 100) for i in range(5)]
+        # # d1 = {i: j for i, j in zip(students, scores)}
+        # # dict(zip(students, scores))
+        # return {i: j for i, j in zip(students, scores)}
+        pass
 
     def quiz26map(self) -> str:
         return None
