@@ -217,8 +217,9 @@ class TitanicModel(object):
         for these in train, test:
             these['Fare'] = pd.qcut(these['Fare'], 4, labels=labels)
             these['FareBand'] = these['Fare'].map(fare_mapping)
-        # print(f'qcut 으로 bins 값 설정 {this.train["FareBand"].head()}')
-        # bins = [-1, 8, 15, 31, np.inf]
+        print(f'qcut 으로 bins 값 설정 {this.train["FareBand"].head()}')
+        bins = [-1, 8, 15, 31, np.inf]
+
         return this
 
     @staticmethod
