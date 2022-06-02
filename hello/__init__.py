@@ -4,6 +4,7 @@ from hello.quiz10 import Quiz10
 from hello.quiz20 import Quiz20
 from hello.quiz30 import Quiz30
 from hello.quiz40 import Quiz40
+from hello.tmp0308 import Bit803
 
 if __name__ == '__main__':
     q0 = Quiz00()
@@ -12,12 +13,12 @@ if __name__ == '__main__':
     q3 = Quiz30()
     q4 = Quiz40()
     while 1:
-        menu = input("00계산기 01Bmi 02주사위 03가위바위보 04윤년 05성적표 06멤버선택 07로또 08입출금 09구구단\n"
-                     "10버블 11삽입 12선택 13퀵 14병합 15매직 16지그재그 17직각별 18정삼각별 19예약\n"
-                     "20리스트 21튜플 22딕셔너리 23 컴프리 24 벅스 뮤직(zip) 25 26 27 멜론 28데이터 프레임 29\n"
-                     "30 31 32 33 34 35 36 37 38 39")
+        menu = input("00계산기 01Bmi 02주사위 03가위바위보 04윤년 05성적표 06멤버선택 07로또 08입출금 09구구단"
+                     "10버블 11삽입 12선택 13퀵 14병합 15매직 16지그재그 17소수 18숫자맞추기 19예약\n"
+                     "20리스트 21튜플 22딕셔너리 23 컴프리 24 벅스뮤직(zip) 25 26 27 멜론 28DF 29"
+                     "30 31 32 33 34 35 36 37 38 39\n")
         if menu == '00':
-            q0.quiz00calculator()
+            Bit803.main()
         elif menu == '01':
             q0.quiz01bmi()
         elif menu == '02':
@@ -29,7 +30,7 @@ if __name__ == '__main__':
         elif menu == '05':
             q0.quiz05grade()
         elif menu == '06':
-            q0.quiz06memberChoice()
+            q0.quiz06member_choice()
         elif menu == '07':
             q0.quiz07lotto()
         elif menu == '08':
@@ -75,9 +76,9 @@ if __name__ == '__main__':
         elif menu == '28':
             q2.quiz28dataframe()
         elif menu == '29':
-            q2.quiz29_pandas_df()
+            q2.quiz29_pandas_01()
         elif menu == '30':
-            q3.quiz30_df_range()
+            q3.quiz30_df_4_by_3()
         elif menu == '31':
             q3.quiz31_rand_2_by_3()
         elif menu == '32':

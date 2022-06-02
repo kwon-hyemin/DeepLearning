@@ -1,14 +1,16 @@
-from context.domains import Dataset
 from context.models import Model
-from icecream import ic
+from models import TitanicModel
+from context.domains import Dataset
 
 
 class TitanicView:
+    # titanicModel = TitanicModel('train.csv', 'test.csv')
     model = Model()
     dataset = Dataset()
 
     def modeling(self, train, test):
         model = self.model
 
-    def preprocess(self, train, test) -> object:
+    def preprocess(self, train, test):
         pass
+
