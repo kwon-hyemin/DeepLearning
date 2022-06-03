@@ -5,9 +5,9 @@ class Iris:
     def __init__(self):
         self.iris = load_iris()
 
-    def printiris_data(self):
+    def main(self):
         print(self.iris.data[0, :])
 
 
 if __name__ == '__main__':
-    Iris().printiris_data()
+    Iris().main()
