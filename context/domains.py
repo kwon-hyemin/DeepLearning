@@ -124,12 +124,12 @@ class Reader(ReaderBase):
     # file 객체에 있는 context와 fname이 필요하다.
 
     def csv(self, path: str) -> PandasDataFrame:
-        o = pd.read_csv(f'{self.new_file(path)}.csv', encoding='UTF-8', thousands=',')
+        o = pd.read_csv(f'{self.new_file(path)}', encoding='UTF-8', thousands=',')
         print(f'type: {type(o)}')
         return o
 
-    def xls(self, path: str, header: str, cols: str, skiprows) -> PandasDataFrame:
-        return pd.read_excel(f'{self.new_file(path)}.xls', header=header, usecols=cols, skiprows=skiprows)
+    def xls(self, file, header) -> object:
+        return pd.read_excel(f'{self.new_file(file)}', header=header)
 
     def json(self, path: str) -> PandasDataFrame:
         return pd.read_json(f'{self.new_file(path)}.json', encoding='UTF-8')

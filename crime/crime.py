@@ -101,9 +101,6 @@ class Solution(Reader):
             station_lats.append(t_loc['location']['lat'])
             station_lngs.append(t_loc['location']['lng'])
 
-
-
-
         gu_names = []
         for name in station_addrs:
             temp = name.split()
@@ -295,15 +292,18 @@ class Solution(Reader):
         file = self.file
         file.context = './data/'
         file.fname = 'geo_simple'
-        seoul_map = self.map_json(file)  # 서울시 지도 geo_simple.json
+        # 서울시 지도 geo_simple.json
+        seoul_map = self.map_json(file)
         # 범죄현황 데이터 crime_in_seoul.csv
         file.fname = 'crime_in_seoul'
-        crime = self.csv(file)
+        crime_in_seoul = self.csv(file)
 
+        crime = self.csv(file)
         file.context = './save/'
         # 검거율 정규화 데이터 police_norm.csv
         file.fname = 'police_norm'
         police_norm = self.csv(file)
+
         # 경찰서위치  police_pos.csv
         file.fname = 'police_pos'
         police_pos = self.csv(file)
@@ -350,7 +350,6 @@ class Solution(Reader):
             folium.CircleMarker([police_pos['lat'][i], police_pos['lng'][i]],
                                 radius=police_pos['검거'][i] * 10,
                                 fill_color='#0a0a32').add_to(folium_map)
-
         folium_map.save('./save/crime_map.html')
 
     def jongam_police(self):

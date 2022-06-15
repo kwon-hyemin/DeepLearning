@@ -15,7 +15,6 @@ Jinja2==2.11.2
 JPype1
 jsonify==0.5
 jupyter==1.0.0
-konlpy==0.5.2
 lxml
 MarkupSafe==1.1.1
 mccabe
@@ -40,3 +39,4 @@ urllib3==1.25.10
 Werkzeug==1.0.1
 wincertstore==0.2
 torch
+konlpy==0.6.0
