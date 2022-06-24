@@ -98,7 +98,7 @@ if __name__ == '__main__':
         elif menu == '39':
             q3.quiz39()
         elif menu == '40':
-            q4.quiz40()
+            q4.quiz40(33333)
         elif menu == '41':
             q4.quiz41()
         elif menu == '42':

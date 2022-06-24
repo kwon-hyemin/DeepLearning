@@ -1,5 +1,13 @@
+import heapq
 class Quiz40:
-    def quiz40(self) -> str: return None
+
+    def quiz40(self, num):
+        result = str(num)
+        if num >= 1000:
+            result = str(num // 1000) + 'k'
+        elif num >= 0:
+            pass
+        print(result)
 
     def quiz41(self) -> str: return None
 
