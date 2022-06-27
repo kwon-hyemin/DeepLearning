@@ -37,7 +37,7 @@ class Solution(object):
                 self.reduce_sample()
 
     def hap(self, x, y):
-        return (x + y)
+        return x + y
 
     def map_sample(self):
         ic(list(map(lambda x: x ** 2, range(5))))

@@ -1,13 +1,14 @@
 import heapq
 class Quiz40:
+    def quiz40(self ,scoville, K):
+        heapq.heapify(scoville)
+        count = 0
+        while len(scoville) >= 2 and scoville[0] < K:
+            fist, second = heapq.heappop(scoville), heapq.heappop(scoville)
+            heapq.heappush(scoville, fist+(second*2))
+            count += 1
+        return count if scoville[0] >= K else-1
 
-    def quiz40(self, num):
-        result = str(num)
-        if num >= 1000:
-            result = str(num // 1000) + 'k'
-        elif num >= 0:
-            pass
-        print(result)
 
     def quiz41(self) -> str: return None
 
