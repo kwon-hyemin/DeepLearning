@@ -13,6 +13,7 @@ class Solution(tf.keras.Model):
         self.val_ds = None
         self.x_test = None
         self.y_test = None
+        self.hist = None
 
     def preprocessing(self):
         # MNIST 데이터셋 가져오기
@@ -48,9 +49,26 @@ class Solution(tf.keras.Model):
 
         # 모델 정보 출력
         model.summary()
+        model.save('./save/mnist_model.h5')
+
+    def draw(self, loss_ax=None):
+        acc_ax = loss_ax.twinx()
+        hist = self.hist
+        fig, loss_ax = plt.subplots()
+        acc_ax = loss_ax.twinx()
+        loss_ax.plot(hist.history['loss'], 'y', label='train loss')
+        loss_ax.plot(hist.history['val_loss'], 'r', label='val loss')
+        acc_ax.plot(hist.history['accuracy'], 'b', label='train acc')
+        acc_ax.plot(hist.history['val_accuracy'], 'g', label='val acc')
+        loss_ax.set_xlabel('epoch')
+        loss_ax.set_ylabel('loss')
+        acc_ax.set_ylabel('accuracy')
+        loss_ax.legend(loc='upper left')
+        acc_ax.legend(loc='lower left')
+        plt.show()
 
 
 if __name__ == '__main__':
     s = Solution()
-    s.preprocessing()
-    s.modeling()
+    # s.preprocessing()
+    # s.modeling()
