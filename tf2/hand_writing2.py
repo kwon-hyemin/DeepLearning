@@ -28,6 +28,9 @@ class Solution(tf.keras.Model):
         self.train_ds = ds.take(train_size).batch(20)
         val_ds = ds.skip(train_size).batch(20)
 
+
+
+
     def modeling(self):
         # MNIST 분류 모델 구성
         model = Sequential()
